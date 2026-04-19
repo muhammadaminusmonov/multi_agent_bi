@@ -1,0 +1,119 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+.venv/
+nexus_venv/
+ENV/
+
+# =========================
+# Environment & Secrets
+# =========================
+.env
+.env.*
+*.env
+*.key
+*.pem
+
+# API keys / config files
+config.yaml
+secrets.toml
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# =========================
+# FastAPI / General Logs
+# =========================
+*.log
+logs/
+uvicorn.log
+
+# =========================
+# Databases
+# =========================
+*.sqlite3
+*.db
+*.db-journal
+
+# PostgreSQL dumps
+*.sql
+*.dump
+
+# =========================
+# Data files (mock warehouse / pandas)
+# =========================
+data/
+*.csv
+*.parquet
+*.feather
+*.xlsx
+
+# =========================
+# LangChain / LLM Artifacts
+# =========================
+.cache/
+langchain_cache/
+*.jsonl
+*.pkl
+
+# =========================
+# LlamaIndex
+# =========================
+storage/
+index_store/
+vector_store/
+
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# OS / IDE junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# PyCharm / JetBrains
+.idea/
+
+# =========================
+# Build / Distribution
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Docker (optional)
+# =========================
+*.tar
+docker-compose.override.yml
+
+# =========================
+# Testing / Coverage
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.bak
+*.swp
