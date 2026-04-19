@@ -53,7 +53,7 @@ uvicorn.log
 # =========================
 # Data files (mock warehouse / pandas)
 # =========================
-data/
+
 *.csv
 *.parquet
 *.feather
