@@ -1,21 +1,38 @@
 import os
+import logging
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from app.agents.tools import (
-    get_total_revenue, get_sales_by_region, get_top_products, get_monthly_sales_trend,
-    get_inventory_value, get_low_stock_items, get_inventory_by_category,
-    get_current_finance_summary, get_monthly_finance_trend,
-    get_employee_count, get_headcount_by_department, get_department_details,
+    get_total_revenue,
+    get_sales_by_region,
+    get_top_products,
+    get_monthly_sales_trend,
+    get_inventory_value,
+    get_low_stock_items,
+    get_inventory_by_category,
+    get_current_finance_summary,
+    get_monthly_finance_trend,
+    get_employee_count,
+    get_headcount_by_department,
+    get_department_details,
     get_active_deals
 )
 
+logger = logging.getLogger(__name__)
+
 def create_orchestrator_agent():
     """Create a LangChain agent with all domain tools."""
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY environment variable not set")
+
+    logger.info(f"Using OpenAI API key starting with: {api_key[:10]}...")
+
     llm = ChatOpenAI(
-        model="gpt-4o-mini",  # or "gpt-3.5-turbo"
+        model="gpt-4o-mini",
         temperature=0,
-        api_key=os.getenv("OPENAI_API_KEY")
+        api_key=api_key,          # <-- Explicitly pass the key
     )
 
     tools = [

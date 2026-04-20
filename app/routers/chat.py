@@ -7,11 +7,15 @@ router = APIRouter(prefix="/api", tags=["Chat"])
 # Global agent instance (created once)
 _agent_executor = None
 
-
 def get_agent():
     global _agent_executor
     if _agent_executor is None:
-        _agent_executor = create_orchestrator_agent()
+        try:
+            _agent_executor = create_orchestrator_agent()
+        except Exception as e:
+            # Log and re-raise
+            print(f"Failed to create agent: {e}")
+            raise
     return _agent_executor
 
 

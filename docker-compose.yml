@@ -22,7 +22,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_API_KEY=${openai_key}
       - DATABASE_URL=postgresql://bi_user:bi_password@db:5432/bi_database
     depends_on:
       db:
