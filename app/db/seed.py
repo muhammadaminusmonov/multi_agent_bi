@@ -6,9 +6,14 @@ from app.db.database import SessionLocal, engine
 from app.db.models import Base, Region, Product, Sale, InventoryItem, FinanceRecord, Department, Employee
 
 def seed_database():
-    Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
+
+    existing_regions = db.query(Region).count()
+    if existing_regions > 0:
+        print("Database already has data. Skipping seed.")
+        db.close()
+        return
 
     # Regions
     regions = ["North", "South", "East", "West"]
